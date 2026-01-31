@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediCare Plus - Professional Healthcare</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo" onclick="location.reload()">
+        <span class="logo-icon">+</span> MediCare Plus
+      </div>
+      <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+        ☰ Filters
+      </button>
+      <button class="book-btn-nav">Book Appointment</button>
+    </header>
+
+    <main>
+      <section id="list-view">
+        <h2 class="section-title">Find Your Specialist</h2>
+        <div class="directory-container">
+          <aside class="sidebar" id="sidebar">
+            <button
+              class="filter-btn active"
+              onclick="filterDoctors('All', this)"
+            >
+              All Doctors
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterDoctors('General Physician', this)"
+            >
+              General Physician
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterDoctors('Gynecologist', this)"
+            >
+              Gynecologist
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterDoctors('Dermatologist', this)"
+            >
+              Dermatologist
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterDoctors('Pediatrician', this)"
+            >
+              Pediatricians
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterDoctors('Neurologist', this)"
+            >
+              Neurologist
+            </button>
+          </aside>
+          <div class="doctors-grid" id="doctor-list-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="doctor-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-body">
+          <div class="doctor-profile-header">
+            <div class="modal-img-wrapper">
+              <img id="detail-img" src="" alt="Doctor" />
+            </div>
+            <div class="modal-info-card">
+              <div id="detail-rank" class="rank-badge"></div>
+              <h1 id="detail-name"></h1>
+              <p class="modal-spec">
+                <span id="detail-spec"></span> • 4 Years Exp
+              </p>
+              <div class="modal-about">
+                <h3>About <span class="info-icon">ⓘ</span></h3>
+                <p id="detail-about"></p>
+              </div>
+              <p class="modal-fee">
+                Appointment Fee: <strong id="detail-fee"></strong>
+              </p>
+            </div>
+          </div>
+
+          <div id="step-slots" class="booking-step">
+            <h3>1. Select a Time Slot</h3>
+            <div class="slots-container" id="daysContainer"></div>
+            <div class="slots-container" id="timesContainer"></div>
+            <button class="book-now-btn" onclick="goToStep(2)">
+              Next: Patient Details
+            </button>
+          </div>
+
+          <div id="step-form" class="booking-step hidden">
+            <h3>2. Patient Information</h3>
+            <form
+              id="patient-details-form"
+              onsubmit="handleFinalBooking(event)"
+            >
+              <div class="input-grid">
+                <div class="input-group">
+                  <label>Full Name</label>
+                  <input
+                    type="text"
+                    id="patient-name"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <label>Phone Number</label>
+                  <input
+                    type="tel"
+                    id="patient-phone"
+                    placeholder="+234..."
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="input-grid">
+                <div class="input-group">
+                  <label>Email Address</label>
+                  <input
+                    type="email"
+                    id="patient-email"
+                    placeholder="john@example.com"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <label>Gender</label>
+                  <select id="patient-gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label>Reason for Visit</label>
+                <textarea
+                  id="visit-reason"
+                  placeholder="Briefly describe your symptoms..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="back-btn" onclick="goToStep(1)">
+                  Back
+                </button>
+                <button type="submit" class="book-now-btn">
+                  Confirm & Book
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

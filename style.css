@@ -1,0 +1,433 @@
+:root {
+  --primary: #13a2b1;
+  --primary-light: #e0f2f1;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-body: #f8fafc;
+  --white: #ffffff;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg-body);
+  margin: 0;
+  padding: 0 5%;
+}
+
+
+/* Layout */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+}
+.logo {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--text-main);
+  cursor: pointer;
+}
+.logo-icon {
+  background: var(--primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-right: 5px;
+}
+
+.directory-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 220px;
+}
+.filter-btn {
+  background: var(--white);
+  border: 1px solid #e2e8f0;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Doctor Card */
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+.card {
+  background: var(--white);
+  border-radius: 15px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+.card-img {
+  background: var(--primary-light);
+  height: 200px;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-info {
+  padding: 15px;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: var(--white);
+  width: 90%;
+  max-width: 800px;
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.close-modal {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.doctor-profile-header {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+.modal-img-wrapper {
+  height: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: var(--primary);
+}
+.modal-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Slot Items */
+.slots-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+.slot-item {
+  border: 1px solid #cbd5e1;
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  min-width: 60px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.slot-item.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.book-now-btn {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rank-badge {
+    display: inline-block;
+    background: #f0fdfa; /* Soft teal tint */
+    color: #13a2b1;      /* MediCare Plus teal */
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    border: 1px solid #ccfbf1;
+}
+
+#detail-fee {
+    color: var(--text-main);
+    font-size: 1.2rem;
+}
+
+.modal-about {
+    margin: 20px 0;
+    padding-top: 15px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.modal-about p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Success State Styling */
+#booking-success {
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.check-circle {
+    width: 80px;
+    height: 80px;
+    background: #10b981;
+    color: white;
+    font-size: 40px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.success-note {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+
+
+
+.booking-step {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-main);
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.input-group textarea {
+    height: 80px;
+    resize: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.back-btn {
+    background: #e2e8f0;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Container for the specific card style */
+.doctor-card-alt {
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid #f1f5f9;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.doctor-card-alt:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Fixed height for consistency */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+/* The Top Rated Badge */
+.top-rated-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #f59e0b; /* Gold/Yellow color */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card-content {
+    padding: 20px;
+    text-align: left;
+}
+
+.doc-name {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.doc-specialty {
+    color: #13a2b1;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #f1f5f9;
+    margin: 15px 0;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.rating-text {
+    color: #f59e0b;
+    font-weight: bold;
+}
+
+/* The light blue button matching the image */
+.card-book-btn {
+    width: 100%;
+    background: #e0f2f1; /* Light teal/cyan tint */
+    color: #13a2b1;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.card-book-btn:hover {
+    background: #b2dfdb;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+  .sidebar {
+    display: none;
+    position: absolute;
+    background: white;
+    z-index: 10;
+    width: 80%;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  .sidebar.open {
+    display: flex;
+  }
+  .doctor-profile-header {
+    grid-template-columns: 1fr;
+  }
+}
