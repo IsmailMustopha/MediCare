@@ -15,6 +15,20 @@ body {
 }
 
 
+a {
+  text-decoration: none;  /* removes underline */
+  color: inherit;         /* uses the parent element’s text color */
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+
 /* Layout */
 header {
   display: flex;
@@ -431,3 +445,4 @@ header {
     grid-template-columns: 1fr;
   }
 }
+
